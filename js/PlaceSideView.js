@@ -13,7 +13,7 @@ AFRAME.registerComponent("side-view", {
 	createPlaces: function () {
 		const side_view_container = document.querySelector("#side-view-container");
 		let previousXposition = -150;
-		let previousYposition = 10;
+		let previousYposition = 30;
 
 		for (var i = 1; i <= 4; i++) {
 			var pos = {

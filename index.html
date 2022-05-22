@@ -15,7 +15,8 @@
 			<a-sky id="main-container" radius="5000" color="#98DAFC"></a-sky>
 
 			<!-- Places Container -->
-			<a-entity id="places-container" cursor-listener tour></a-entity>
+			<a-entity id="places-container" tour></a-entity>
+      <a-entity id="side-view-container" side-view cursor-listener></a-entity>
 
 			<!-- CAMERA -->
 			<a-camera id="camera" wasd-controls="enabled:false;">
@@ -41,7 +42,6 @@
 					material="color: #fff; shader: flat"
 				>
 				</a-entity>
-				<a-entity id="side-view-container" side-view cursor-listener></a-entity>
 			</a-camera>
 		</a-scene>
 	</body>

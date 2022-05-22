@@ -9,9 +9,7 @@ AFRAME.registerComponent("cursor-listener", {
 	},
 
 	handlePlacesListState: function () {
-		console.log(this.el)
 		const id = this.el.getAttribute("id");
-		console.log(id)
 		const placesId = ["taj-mahal", "budapest", "new-york-city", "eiffel-tower"];
 		if (placesId.includes(id)) {
 			const placeContainer = document.querySelector("#places-container");
@@ -31,7 +29,6 @@ AFRAME.registerComponent("cursor-listener", {
 	handleMouseEnterEvents: function () {
 		// Mouse Enter Events
 		this.el.addEventListener("mouseenter", () => {
-
 			this.handlePlacesListState();
 		});
 	},
@@ -58,7 +55,6 @@ AFRAME.registerComponent("cursor-listener", {
 
 	handleMouseClick: function () {
 		this.el.addEventListener("click", (e) => {
-			console.log("mouse clcik")
 			var placesContainer = document.querySelector("#places-container");
 			var { state } = placesContainer.getAttribute("tour");
 			if (state === "places-list") {
@@ -77,28 +73,27 @@ AFRAME.registerComponent("cursor-listener", {
 				}
 			}
 			if (state === "view" || state === "change_view") {
-				this.handleViewState()
+				this.handleViewState();
 			}
 		});
 	},
 
-	handleViewState: function () {
-		const el = this.el;
-	console.log(el)
+	handleViewState: async function () {
+		const el = this.el
+		console.log(el);
 		const id = el.getAttribute("id");
-		console.log(id)
+		console.log(id);
 		var places_container = document.querySelector("#places-container");
 		const { selectedItemId } = places_container.getAttribute("cursor-listener");
 		const places_views_list = ["place-1", "place-2", "place-3", "place-4"];
 		if (places_views_list.includes(id)) {
+			const sky = document.querySelector("#main-container");
+		sky.setAttribute("material", {
+			src: `assets/360_images/${selectedItemId}/${id}.jpg`,
+			color: "white",
+		});
 			places_container.setAttribute("tour", { state: "change_view" });
 		}
-		const sky = document.querySelector("#main-container");
-		sky.setAttribute("material", {
-            src: `assets/360_images/${selectedItemId}/${id}.jpg`,
-            color: "white"
-		});
+		
 	},
-
-
 });
